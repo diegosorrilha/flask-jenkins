@@ -13,7 +13,10 @@
 //
 pipeline {
 //     agent { dockerfile true }
-    agent any
+//     agent any
+    agent {
+        docker { image 'python:3.9.5-slim-buster' }
+    }
     stages {
         stage ("Test") {
             steps {
