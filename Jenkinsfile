@@ -10,7 +10,7 @@ pipeline {
 
         stage('Testing') {
             steps {
-                sh 'pytest -v ldap_service/tests.py'
+                sh 'pytest -v --color=yes ldap_service/tests.py'
             }
         }
 
