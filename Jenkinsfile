@@ -1,12 +1,9 @@
 pipeline {
     agent { dockerfile true }
     stages {
-
         stage('Testing') {
             steps {
                 sh 'docker build -t ldap-service:latest .'
-            }
-            steps {
                 sh 'docker run -p 8000:5000 ldap-service'
             }
         }
