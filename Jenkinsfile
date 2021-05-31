@@ -5,8 +5,10 @@ node {
 
     customImage.inside {
         sh 'pytest -v --color=yes ldap_service/tests.py'
+        sh "docker logs ${c.id}"
     }
 }
+// sh "docker logs ${c.id}"
 //
 // pipeline {
 // //     agent { dockerfile true }
