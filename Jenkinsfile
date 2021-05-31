@@ -5,7 +5,6 @@ pipeline {
         stage('Docker') {
             steps {
                 sh 'docker build -t ldap-service:latest .'
-                sh 'python -V'
             }
         }
 
