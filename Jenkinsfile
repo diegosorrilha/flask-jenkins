@@ -16,17 +16,19 @@ pipeline {
     agent any
     stages {
         stage ("Test") {
-            node('docker'){
-                checkout scm
+            steps {
+                node('docker'){
+                    checkout scm
 
-                def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-                customImage.inside {
-                    sh 'pytest -v --color=yes ldap_service/tests.py'
+                    customImage.inside {
+                        sh 'pytest -v --color=yes ldap_service/tests.py'
+                    }
+                    sh "echo ${c.id}"
+
                 }
-                sh "echo ${c.id}"
-
-            }
+           }
         }
 //         stage ("Test") {
 //             steps {
