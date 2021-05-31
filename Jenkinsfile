@@ -2,9 +2,9 @@ pipeline {
 //     agent { dockerfile true }
     agent any
     stages {
-        stage('Docker') {
+        stage('Start') {
             steps {
-                sh 'docker build -t ldap-service:latest .'
+                sh 'vai começar'
             }
         }
 
@@ -16,6 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'docker build -t ldap-service:latest .'
                 sh 'echo "built"'
             }
         }
