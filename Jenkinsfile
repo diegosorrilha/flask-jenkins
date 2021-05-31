@@ -14,10 +14,14 @@
 pipeline {
 //     agent { dockerfile true }
     agent any
-    stages {
+//     stages {
+
+
+
+    node('docker'){
         stage ("Test") {
             steps {
-                node('docker'){
+
                     checkout scm
 
                     def customImage = docker.build("my-image:${env.BUILD_ID}")
