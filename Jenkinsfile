@@ -21,9 +21,6 @@ pipeline {
                     )
                     sh """
                     echo ${releaseInput}
-//                     make release v=${releaseInput}
-//                     source .venv/bin/activate
-//                     fab -H ${env.HOSTS} deploy --tag ${releaseInput}
                     """
                 }
             }
