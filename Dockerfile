@@ -18,4 +18,4 @@ COPY . /app/
 
 # ENTRYPOINT ["./gunicorn.sh"]
 # ENTRYPOINT ["gunicorn", "-w 4 --threads 2 -b 0.0.0.0:5000 --chdir ldap_service 'app:create_app()'"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--chdir", "ldap_service", "'app:create_app()'"]`
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--chdir", "ldap_service", "'app:create_app()'"]`
