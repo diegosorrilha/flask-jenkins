@@ -18,7 +18,6 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-//                     def version = readFile encoding: 'utf-8', file: '__version__.py'
                     def message = "New version:"
                     def releaseInput = input(
                         id: 'userInput',
@@ -33,9 +32,9 @@ pipeline {
                         ]
                     )
                     sh "echo $releaseInput"
-                    sh 'echo building release v=${releaseInput}'
-                    sh 'docker build -t ldap-service:${releaseInput}.'
-                    sh 'echo "built"'
+                    sh "echo building release v=${releaseInput}"
+                    sh "docker build -t ldap-service:${releaseInput}."
+                    sh "echo built"
                 }
 
             }
