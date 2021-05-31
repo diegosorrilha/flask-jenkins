@@ -4,7 +4,7 @@ node {
     def customImage = docker.build("my-image:${env.BUILD_ID}")
 
     customImage.inside {
-        sh 'make test'
+        sh 'pytest -v --color=yes ldap_service/tests.py'
     }
 }
 //
