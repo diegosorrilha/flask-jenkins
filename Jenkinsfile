@@ -3,11 +3,23 @@ pipeline {
     agent any
     stages {
 
-        stage('Test') {
+        stage ("Test") {
             steps {
-                echo "tests"
+                sh """
+                python3 -m venv .venv
+                source .venv/bin/activate
+                pip install --upgrade pip
+                pip install -r ${env.WORKSPACE}/requirements/prod.txt
+                sh 'pytest -v --color=yes ldap_service/tests.py'
+                """
             }
         }
+
+//         stage('Test') {
+//             steps {
+//                 echo "tests"
+//             }
+//         }
 
 //         stage('Testing') {
 //             steps {
