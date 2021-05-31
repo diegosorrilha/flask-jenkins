@@ -2,14 +2,22 @@ pipeline {
 //     agent { dockerfile true }
     agent any
     stages {
-        stage('Checkout') {
+
+        stage('Test') {
             steps {
-                checkout scm
+
             }
         }
-        stage('Start') {
+
+//         stage('Testing') {
+//             steps {
+//                 sh 'pytest -v --color=yes ldap_service/tests.py'
+//             }
+//         }
+
+        stage('Build') {
             steps {
-                 script {
+                script {
 //                     def version = readFile encoding: 'utf-8', file: '__version__.py'
                     def message = "New version:"
                     def releaseInput = input(
@@ -26,22 +34,12 @@ pipeline {
                     )
                     sh """
                     echo ${releaseInput}
+                    sh 'echo building release v=${releaseInput}'
+                    sh 'docker build -t ldap-service:${releaseInput} .'
+                    sh 'echo "built"'
                     """
                 }
-            }
-        }
 
-//         stage('Testing') {
-//             steps {
-//                 sh 'pytest -v --color=yes ldap_service/tests.py'
-//             }
-//         }
-
-        stage('Build') {
-            steps {
-                sh 'echo building release v=${releaseInput}'
-                sh 'docker build -t ldap-service:${releaseInput} .'
-                sh 'echo "built"'
             }
         }
 
