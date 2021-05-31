@@ -20,23 +20,24 @@ pipeline {
                         ]
                     )
                     sh """
-                    make release v=${releaseInput}
-                    source .venv/bin/activate
-                    fab -H ${env.HOSTS} deploy --tag ${releaseInput}
+                    echo ${releaseInput}
+//                     make release v=${releaseInput}
+//                     source .venv/bin/activate
+//                     fab -H ${env.HOSTS} deploy --tag ${releaseInput}
                     """
                 }
             }
         }
 
-        stage('Testing') {
-            steps {
-                sh 'pytest -v --color=yes ldap_service/tests.py'
-            }
-        }
+//         stage('Testing') {
+//             steps {
+//                 sh 'pytest -v --color=yes ldap_service/tests.py'
+//             }
+//         }
 
         stage('Build') {
             steps {
-                sh 'docker build -t ldap-service:latest .'
+                sh 'docker build -t ldap-service:${releaseInput} .'
                 sh 'echo "built"'
             }
         }
