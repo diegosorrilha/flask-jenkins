@@ -21,6 +21,7 @@ pipeline {
         stage ("Test") {
             steps {
                 sh "python -V"
+                sh "echo vai?"
                 sh """
                 python -m venv .venv
                 source .venv/bin/activate
