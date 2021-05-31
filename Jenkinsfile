@@ -1,21 +1,30 @@
-node {
-    checkout scm
-
-    def customImage = docker.build("my-image:${env.BUILD_ID}")
-
-    customImage.inside {
-        sh 'pytest -v --color=yes ldap_service/tests.py'
-    }
-    sh "echo ${c.id}"
-
-}
+// node {
+//     checkout scm
+//
+//     def customImage = docker.build("my-image:${env.BUILD_ID}")
+//
+//     customImage.inside {
+//         sh 'pytest -v --color=yes ldap_service/tests.py'
+//     }
+//     sh "echo ${c.id}"
+//
+// }
 // sh "docker logs ${c.id}"
 //
-// pipeline {
-// //     agent { dockerfile true }
-//     agent any
-//     stages {
-//
+pipeline {
+//     agent { dockerfile true }
+    agent any
+    stages {
+
+        stage ("Test") {
+            steps {
+                def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+                customImage.inside {
+                    sh 'pytest -v --color=yes ldap_service/tests.py'
+                }
+            }
+        }
 //         stage ("Test") {
 //             steps {
 //                 sh """
@@ -27,7 +36,7 @@ node {
 //                 """
 //             }
 //         }
-//
+
 //         stage('Build') {
 //             steps {
 //                 script {
@@ -51,15 +60,15 @@ node {
 //                 }
 //
 //             }
-//         }
-//
-//         stage('Deploy') {
-//             steps {
-//                 sh 'echo "deployed"'
-//             }
-//         }
-//
-//     }
-// }
-//
-//
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'echo "deployed"'
+            }
+        }
+
+    }
+}
+
+
