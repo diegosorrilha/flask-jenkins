@@ -34,6 +34,7 @@ pipeline {
                 }
            }
         }
+    ]
 //         stage ("Test") {
 //             steps {
 //                 sh """
@@ -71,13 +72,13 @@ pipeline {
 //             }
 //         }
 
-        stage('Deploy') {
-            steps {
-                sh 'echo "deployed"'
-            }
-        }
-
-    }
+//         stage('Deploy') {
+//             steps {
+//                 sh 'echo "deployed"'
+//             }
+//         }
+//
+//     }
 }
 
 
