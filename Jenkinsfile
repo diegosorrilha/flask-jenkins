@@ -22,14 +22,13 @@
         stage ("Test") {
             steps {
 
-                    checkout scm
+                checkout scm
 
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-                    customImage.inside {
-                        sh 'pytest -v --color=yes ldap_service/tests.py'
-                    }
-                    sh "echo ${c.id}"
+                customImage.inside {
+                    sh 'pytest -v --color=yes ldap_service/tests.py'
+                }
 
 //                 }
            }
