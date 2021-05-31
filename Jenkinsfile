@@ -19,18 +19,19 @@
 
 
     node('docker'){
+        stage ("ui") {
+            steps {
+                echo "VAI"
+           }
+        }
         stage ("Test") {
             steps {
-
                 checkout scm
-
                 def customImage = docker.build("my-image:${env.BUILD_ID}")
 
                 customImage.inside {
                     sh 'pytest -v --color=yes ldap_service/tests.py'
                 }
-
-//                 }
            }
         }
     }
