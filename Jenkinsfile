@@ -11,7 +11,7 @@
 // }
 // sh "docker logs ${c.id}"
 //
-pipeline {
+// pipeline {
 //     agent { dockerfile true }
     agent any
 //     stages {
@@ -79,6 +79,6 @@ pipeline {
 //         }
 //
 //     }
-}
+// }
 
 
