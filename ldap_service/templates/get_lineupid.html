@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>LDAP Service - Get Lineup ID</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body style="background-color: #f9f9eb">
+  <nav class="light-blue darken-3" role="navigation">
+  </nav>
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-text text-darken-2">Get Lineup ID</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Please enter the account number</h5>
+        <form action="" method="post">
+              <input name="account_number" type='number' />
+              <input class="btn-large white-text waves-light cyan darken-1" type="submit" value="Get">
+      </form>
+      </div>
+      {% if lineup_id%}
+        <div class="row center">
+          <h5 class="header col s12 light">Lineup ID: <span class="header center blue-text text-darken-3">{{ lineup_id }}</span></h5>
+        </div>
+      {% endif %}
+      {% if error%}
+        <div class="row center">
+          <h6 class="header col s12 light red-text text-darken-4">We were unable to get the lineup for account number <span class="header center blue-text text-darken-3">{{ request.form.get('account_number') }}</span>.
+            <br>
+            Please make sure the account is correct and try again.
+          </h6>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  </body>
+</html>
