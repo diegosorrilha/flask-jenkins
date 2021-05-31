@@ -21,7 +21,7 @@ pipeline {
         stage ("Test") {
             steps {
                 sh """
-                python3 -m venv .venv
+                python -m venv .venv
                 source .venv/bin/activate
                 pip install --upgrade pip
                 pip install -r ${env.WORKSPACE}/requirements/prod.txt
