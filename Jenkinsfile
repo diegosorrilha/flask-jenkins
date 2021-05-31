@@ -5,7 +5,7 @@ pipeline {
         stage('Start') {
             steps {
                  script {
-                    def version = readFile encoding: 'utf-8', file: '__version__.py'
+//                     def version = readFile encoding: 'utf-8', file: '__version__.py'
                     def message = "New version:"
                     def releaseInput = input(
                         id: 'userInput',
