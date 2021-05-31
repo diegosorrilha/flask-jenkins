@@ -36,7 +36,6 @@ pipeline {
                     sh 'echo building release v=$releaseInput'
                     sh 'docker build -t ldap-service:$releaseInput .'
                     sh 'echo "built"'
-                    """
                 }
 
             }
