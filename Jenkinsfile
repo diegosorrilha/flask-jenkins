@@ -4,7 +4,27 @@ pipeline {
     stages {
         stage('Start') {
             steps {
-                sh 'vai começar'
+                 script {
+                    def version = readFile encoding: 'utf-8', file: '__version__.py'
+                    def message = "New version:"
+                    def releaseInput = input(
+                        id: 'userInput',
+                        message: "${message}",
+                        parameters: [
+                            [
+                                $class: 'TextParameterDefinition',
+                                defaultValue: 'uat',
+                                description: 'Release candidate',
+                                name: 'rc'
+                            ]
+                        ]
+                    )
+                    sh """
+                    make release v=${releaseInput}
+                    source .venv/bin/activate
+                    fab -H ${env.HOSTS} deploy --tag ${releaseInput}
+                    """
+                }
             }
         }
 
