@@ -1,10 +1,13 @@
 pipeline {
-  agent any
-  stages {
-    stage('test') {
-      steps {
-        sh 'echo VAI'
-      }
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
     }
-  }
 }
+
+
