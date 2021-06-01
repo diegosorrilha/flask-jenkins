@@ -19,13 +19,13 @@ pipeline {
         }
     }
 
-    stages {
-        stage ("Install dependecies") {
-            steps {
-                sh "python -V"
-                sh "echo 'VAI CAPETAA'"
-            }
-        }
+//     stages {
+//         stage ("Install dependecies") {
+//             steps {
+//                 sh "python -V"
+//                 sh "echo 'VAI CAPETAA'"
+//             }
+//         }
 
 //     agent { dockerfile true }
 //     agent any
