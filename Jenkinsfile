@@ -12,7 +12,6 @@
 // sh "docker logs ${c.id}"
 //
 pipeline {
-
     agent {
         // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
         dockerfile {
@@ -25,7 +24,7 @@ pipeline {
         stage ("Install dependecies") {
             steps {
                 sh "python -V"
-                sh "VAI CAPETA"
+                sh "VAI CAPETAA"
             }
     }
 //     agent { dockerfile true }
