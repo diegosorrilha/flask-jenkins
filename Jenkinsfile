@@ -23,7 +23,7 @@ pipeline {
         stage ("Install dependecies") {
             steps {
                 sh "python -V"
-                sh "VAI CAPETAA"
+                sh "echo 'VAI CAPETAA'"
             }
         }
     }
