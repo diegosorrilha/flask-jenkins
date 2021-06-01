@@ -19,6 +19,7 @@ pipeline {
             steps {
                 // sh "docker build -t ldap-service:${env.GIT_COMMIT} ."
                 echo "New Version: ldap-service:${env.GIT_COMMIT}"
+                echo "branch: ${env.BRANCH_NAME}"
             }
         }
 
