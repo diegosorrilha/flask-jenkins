@@ -57,7 +57,17 @@ pipeline {
         stage('Build') {
             steps {
 //                 sh "docker build -t ldap-service:${releaseInput} ."
-                sh "docker ps"
+                node {
+                    checkout scm
+
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+
+                    customImage.inside {
+                        sh 'pytest -v --color=yes ldap_service/tests.py'
+                    }
+                    sh "echo ${c.id}"
+
+                }
             }
         }
 
