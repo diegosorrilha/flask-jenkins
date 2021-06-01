@@ -55,13 +55,11 @@ pipeline {
         }
 
         stage('Build') {
-            node {
-                steps {
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+            steps {
+                def customImage = docker.build("my-image:${env.BUILD_ID}")
 
-                    customImage.inside {
-                        sh 'pytest -v --color=yes ldap_service/tests.py'
-                    }
+                customImage.inside {
+                    sh 'pytest -v --color=yes ldap_service/tests.py'
                 }
             }
         }
