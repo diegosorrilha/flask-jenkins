@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build') {
             steps {
-//                 sh "docker build -t ldap-service:${env.GIT_COMMIT} ."
+                // sh "docker build -t ldap-service:${env.GIT_COMMIT} ."
                 echo "New Version: ldap-service:${env.GIT_COMMIT}"
             }
         }
