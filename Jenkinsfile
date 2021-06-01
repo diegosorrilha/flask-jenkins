@@ -27,7 +27,7 @@ pipeline {
                 . .venv/bin/activate &&
                 pip install --upgrade pip &&
                 pip install -r ${env.WORKSPACE}/requirements/prod.txt &&
-                sh 'pytest -v --color=yes ldap_service/tests.py'
+                sh pytest -v --color=yes ldap_service/tests.py
                 """
             }
         }
@@ -65,5 +65,25 @@ pipeline {
 
     }
 }
-
-
+//
+// ldapsearch -h vedir.srv.hcvlny.cv.net -p 389 -D uid=appuser,ou=appadm,o=entitlement -w PaBlAn0 -b ou=roles,o=entitlement "(&(Accountnumber=0783767649501)(objectClass=CVCSDPRole))" | egrep "attribute2|acctfta"
+//
+// ldapsearch -h vedir.srv.hcvlny.cv.net -p 389 -D uid=appuser,ou=appadm,o=entitlement -w PaBlAn0 -b ou=ocmrlineup,o=entitlement "(&(OCMRCorpFTA=7837-22)(objectClass=CVCSDPLineupMap))" | egrep OCMRLaBoxLineupID | sort -u
+//
+// ldapsearch -h vedir.srv.hcvlny.cv.net -p 389 -D uid=appuser,ou=appadm,o=entitlement -w PaBlAn0
+//
+//
+// ----
+//
+// ldapsearch <previous_options> "(object_type)=(object_value)" <optional_attributes>
+//
+// Finding all objects in the directory tree
+// ldapsearch -x -b <search_base> -H <ldap_host> -D <bind_dn> -W "objectclass=*"
+//
+// Finding user accounts using ldapsearch
+// ldapsearch -x -b <search_base> -H <ldap_host> -D <bind_dn> -W "objectclass=account"
+//
+//
+//
+//
+//
