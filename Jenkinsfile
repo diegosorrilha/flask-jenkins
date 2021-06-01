@@ -23,7 +23,7 @@ pipeline {
                 sh "python -V"
                 sh "echo vai?"
                 sh "python -m venv .venv"
-                sh ". .venv/bin/activate"
+                sh "source .venv/bin/activate"
                 sh "pip install --upgrade pip"
                 sh "pip install -r ${env.WORKSPACE}/requirements/prod.txt &&"
             }
