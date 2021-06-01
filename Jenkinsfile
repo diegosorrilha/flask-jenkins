@@ -33,6 +33,5 @@ pipeline {
                 sh 'echo "deployed in Staging with success"'
             }
         }
-
     }
 }
