@@ -19,12 +19,14 @@ pipeline {
             steps {
                 // sh "docker build -t ldap-service:${env.GIT_COMMIT} ."
                 echo "New Version: ldap-service:${env.GIT_COMMIT}"
-                echo "Job NAME: ldap-service:${env.JOB_NAME}"
+
             }
         }
 
         stage('Deploy') {
             steps {
+                echo "Job NAME: ldap-service:${env.JOB_NAME}"
+                // ldap-service:ldap-service-PROD
                 sh 'echo "deployed with success"'
             }
         }
