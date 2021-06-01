@@ -24,8 +24,12 @@ pipeline {
         }
 
         stage('Deploy') {
+            when {
+                branch 'production'
+            }
             steps {
                 echo "Job NAME: ldap-service:${env.JOB_NAME}"
+
                 // ldap-service:ldap-service-PROD
                 sh 'echo "deployed with success"'
             }
