@@ -22,12 +22,10 @@ pipeline {
             steps {
                 sh "python -V"
                 sh "echo vai?"
-                sh """
-                python -m venv .venv
-                . .venv/bin/activate
-                pip install --upgrade pip
-                pip install -r ${env.WORKSPACE}/requirements/prod.txt &&
-                """
+                sh "python -m venv .venv"
+                sh ". .venv/bin/activate"
+                sh "pip install --upgrade pip"
+                sh "pip install -r ${env.WORKSPACE}/requirements/prod.txt &&"
             }
         }
 
@@ -35,7 +33,7 @@ pipeline {
             steps {
                 sh "echo vai?"
                 sh """
-                . .venv/bin/activate &&
+                . .venv/bin/activate
                 pytest -v --color=yes ldap_service/tests.py
                 """
             }
