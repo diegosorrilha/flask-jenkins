@@ -26,7 +26,7 @@ pipeline {
                 sh "echo 'VAI CAPETAA'"
             }
         }
-    }
+
 //     agent { dockerfile true }
 //     agent any
 //     agent {
@@ -110,5 +110,5 @@ pipeline {
 //             }
 //         }
 //
-//     }
+    }
 }
