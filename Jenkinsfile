@@ -19,14 +19,12 @@ pipeline {
             steps {
                 // sh "docker build -t ldap-service:${env.GIT_COMMIT} ."
                 echo "New Version: ldap-service:${env.GIT_COMMIT}"
-                echo branch
-
             }
         }
 
         stage('Deploy') {
             when {
-                branch 'master'
+                expression { BRANCH_NAME == master }
             }
             steps {
                 echo "Job NAME: ldap-service:${env.JOB_NAME}"
