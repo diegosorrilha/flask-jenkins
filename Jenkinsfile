@@ -56,7 +56,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "echo 'teste'"
+                sh "echo 'testee'"
 //                 def customImage = docker.build("my-image:${env.BUILD_ID}")
 //
 //                 customImage.inside {
