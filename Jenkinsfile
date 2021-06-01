@@ -65,8 +65,6 @@ pipeline {
                     customImage.inside {
                         sh 'pytest -v --color=yes ldap_service/tests.py'
                     }
-                    sh "echo ${c.id}"
-
                 }
             }
         }
