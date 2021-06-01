@@ -18,7 +18,7 @@ pipeline {
         docker { image 'python:3.9.5-slim-buster' }
     }
     stages {
-        stage ("Test") {
+        stage ("Install dependecies") {
             steps {
                 sh "python -V"
                 sh "echo vai?"
@@ -27,8 +27,16 @@ pipeline {
                 . .venv/bin/activate &&
                 pip install --upgrade pip &&
                 pip install -r ${env.WORKSPACE}/requirements/prod.txt &&
-                . .venv/bin/activate &&
-                sh pytest -v --color=yes ldap_service/tests.py
+                """
+            }
+        }
+
+        stage ("Test") {
+            steps {
+                sh "echo vai?"
+                sh """
+                . .venv/bin/activate && 
+                pytest -v --color=yes ldap_service/tests.py
                 """
             }
         }
