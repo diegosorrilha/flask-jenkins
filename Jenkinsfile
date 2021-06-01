@@ -25,6 +25,7 @@ pipeline {
                 sh "python -V"
                 sh "VAI CAPETAA"
             }
+        }
     }
 //     agent { dockerfile true }
 //     agent any
