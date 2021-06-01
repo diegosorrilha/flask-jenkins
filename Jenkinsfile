@@ -24,13 +24,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                expression { BRANCH_NAME == master }
-            }
             steps {
-                echo "Job NAME: ldap-service:${env.JOB_NAME}"
-
-                // ldap-service:ldap-service-PROD
                 sh 'echo "deployed in Staging with success"'
             }
         }
