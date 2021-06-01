@@ -19,7 +19,7 @@ pipeline {
         }
     }
 
-//     stages {
+    stages {
 //         stage ("Install dependecies") {
 //             steps {
 //                 sh "python -V"
