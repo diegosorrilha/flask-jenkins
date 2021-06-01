@@ -45,7 +45,7 @@ pipeline {
 //                 """
 //             }
 //         }
-//
+
         stage ("Test") {
             steps {
                 sh """
@@ -56,7 +56,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "echo 'testee'"
+                sh "${env.BUILD_ID} "
+                sh "docker build -t ldap-service:${env.BUILD_ID} ."
 //                 def customImage = docker.build("my-image:${env.BUILD_ID}")
 //
 //                 customImage.inside {
