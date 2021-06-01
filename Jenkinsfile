@@ -46,15 +46,13 @@ pipeline {
 //             }
 //         }
 //
-//         stage ("Test") {
-//             steps {
-//                 sh "echo vai?"
-//                 sh """
-//                 . .venv/bin/activate
-//                 pytest -v --color=yes ldap_service/tests.py
-//                 """
-//             }
-//         }
+        stage ("Test") {
+            steps {
+                sh """
+                pytest -v --color=yes ldap_service/tests.py
+                """
+            }
+        }
 
 //         stage('Build') {
 //             steps {
