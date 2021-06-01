@@ -19,8 +19,6 @@ pipeline {
             filename 'Dockerfile'
             dir 'build'
             label 'my-defined-label'
-            additionalBuildArgs  '--build-arg version=1.0.2'
-            args '-v /tmp:/tmp'
         }
     }
 
@@ -85,38 +83,38 @@ pipeline {
 //             }
 //         }
 
-        stage('Build') {
-            steps {
-                script {
-                    def message = "New version:"
-                    def releaseInput = input(
-                        id: 'userInput',
-                        message: "${message}",
-                        parameters: [
-                            [
-                                $class: 'TextParameterDefinition',
-                                defaultValue: 'uat',
-                                description: 'Release candidate',
-                                name: 'rc'
-                            ]
-                        ]
-                    )
-                    sh "echo $releaseInput"
-                    sh "echo building release v=${releaseInput}"
-                    sh "docker build -t ldap-service:${releaseInput} ."
-                    sh "echo built"
-                }
-
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'echo "deployed"'
-            }
-        }
-
-    }
+//         stage('Build') {
+//             steps {
+//                 script {
+//                     def message = "New version:"
+//                     def releaseInput = input(
+//                         id: 'userInput',
+//                         message: "${message}",
+//                         parameters: [
+//                             [
+//                                 $class: 'TextParameterDefinition',
+//                                 defaultValue: 'uat',
+//                                 description: 'Release candidate',
+//                                 name: 'rc'
+//                             ]
+//                         ]
+//                     )
+//                     sh "echo $releaseInput"
+//                     sh "echo building release v=${releaseInput}"
+//                     sh "docker build -t ldap-service:${releaseInput} ."
+//                     sh "echo built"
+//                 }
+//
+//             }
+//         }
+//
+//         stage('Deploy') {
+//             steps {
+//                 sh 'echo "deployed"'
+//             }
+//         }
+//
+//     }
 }
 
 // ldapsearch -h vedir.srv.hcvlny.cv.net -p 389 -D uid=appuser,ou=appadm,o=entitlement -w PaBlAn0 -b ou=roles,o=entitlement "(&(Accountnumber=0783767649501)(objectClass=CVCSDPRole))" | egrep "attribute2|acctfta"
