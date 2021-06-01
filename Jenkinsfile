@@ -54,30 +54,12 @@ pipeline {
             }
         }
 
-//         stage('Build') {
-//             steps {
-//                 script {
-//                     def message = "New version:"
-//                     def releaseInput = input(
-//                         id: 'userInput',
-//                         message: "${message}",
-//                         parameters: [
-//                             [
-//                                 $class: 'TextParameterDefinition',
-//                                 defaultValue: 'uat',
-//                                 description: 'Release candidate',
-//                                 name: 'rc'
-//                             ]
-//                         ]
-//                     )
-//                     sh "echo $releaseInput"
-//                     sh "echo building release v=${releaseInput}"
-//                     sh "docker build -t ldap-service:${releaseInput} ."
-//                     sh "echo built"
-//                 }
-//
-//             }
-//         }
+        stage('Build') {
+            steps {
+//                 sh "docker build -t ldap-service:${releaseInput} ."
+                sh "docker ps"
+            }
+        }
 
 //         stage('Build') {
 //             steps {
@@ -109,6 +91,6 @@ pipeline {
 //                 sh 'echo "deployed"'
 //             }
 //         }
-//
+
     }
 }
