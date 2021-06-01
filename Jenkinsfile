@@ -27,7 +27,8 @@ pipeline {
                 . .venv/bin/activate &&
                 pip install --upgrade pip &&
                 pip install -r ${env.WORKSPACE}/requirements/prod.txt &&
-                sh .venv/bin/pytest -v --color=yes ldap_service/tests.py
+                . .venv/bin/activate &&
+                sh pytest -v --color=yes ldap_service/tests.py
                 """
             }
         }
